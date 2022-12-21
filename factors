@@ -10,7 +10,11 @@ if __name__ == "__main__":
 		for line in lines:
 			lpi.append(int(line))
 		for i in lpi:
-			j = 2
-			while i % j != 0:
-			    j += 1
+			j = 1
+			if i < 2:
+			    j = factors(i)
+			else:
+			    j = 2
+			    while i % j != 0:
+			        j += 1
 			print("{}={:d}*{}".format(i,i//j,j))
