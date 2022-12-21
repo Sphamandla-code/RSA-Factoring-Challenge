@@ -1,17 +1,14 @@
 #!/usr/bin/python3
 import sys
-
-if len(sys.argv) != 2:
-    exit(1)
-else:
-    file_name = sys.argv[1]
-    file_of_number = open(file_name)
-    number = file_of_number.readline()
-    while number != "\n" and number != "":
-        number = int(number)
-        divisor = 2
-        while number % divisor != 0:
-            divisor += 1
-        d_r = int(number / divisor)
-        print(f"{number}={d_r}*{divisor}")
-        number = file_of_number.readline()
+from primes import factors
+if __name__ == "__main__":
+	if len(sys.argv) != 2:
+		exit(1)
+	lpi = []
+	with open(sys.argv[1], 'r') as file:
+		lines = file.readlines()
+		for line in lines:
+			lpi.append(int(line))
+		for i in lpi:
+			j = factors(i)
+			print("{}={:d}*{}".format(i,i//j,j))
